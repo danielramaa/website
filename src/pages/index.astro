@@ -1,16 +1,49 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import Intro from '../content/intro.mdx';
-import { SOCIAL_LINKS } from '../data/links';
+import profile from '../assets/profile.webp';
+import { AFFILIATIONS, SOCIAL_LINKS } from '../data/links';
 ---
 
 <Layout>
-  <h1 class="text-4xl font-bold tracking-tight">Hi, I'm Daniel.</h1>
-  <p class="mt-4 text-lg text-neutral-600 dark:text-neutral-400">
-    Informatics and Computing Engineering student at FEUP, Porto.
-  </p>
+  <div class="flex flex-col gap-6 sm:flex-row sm:items-center sm:gap-8">
+    <div class="flex shrink-0 flex-col items-center gap-3 self-start sm:self-auto">
+      <Image
+        src={profile}
+        alt="Photo of Daniel Rama"
+        width={256}
+        height={256}
+        loading="eager"
+        class="size-32 rounded-full object-cover ring-1 ring-neutral-200 dark:ring-neutral-800"
+      />
+      <ul class="flex gap-2">
+        {AFFILIATIONS.map(({ label, href, logo, bg }) => (
+          <li>
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={label}
+              aria-label={label}
+              class={`flex size-9 items-center justify-center overflow-hidden rounded-full ring-1 ring-neutral-200 transition-transform hover:scale-110 dark:ring-neutral-800 ${bg}`}
+            >
+              <img src={logo} alt="" class="size-6 object-contain" />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
 
-  <ul class="mt-6 flex flex-wrap gap-3">
+    <div>
+      <h1 class="text-4xl font-bold tracking-tight">Hi, I'm Daniel.</h1>
+      <p class="mt-4 text-lg text-neutral-600 dark:text-neutral-400">
+        Informatics and Computing Engineering student at FEUP, Porto.
+      </p>
+    </div>
+  </div>
+
+  <ul class="mt-8 flex flex-wrap gap-3">
     {SOCIAL_LINKS.map(({ label, href, icon }) => (
       <li>
         <a
