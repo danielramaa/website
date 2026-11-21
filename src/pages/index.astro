@@ -37,7 +37,7 @@ import { AFFILIATIONS, CONTACT_LINKS, SOCIAL_LINKS } from '../data/links';
     </div>
 
     <div>
-      <h1 class="text-4xl font-bold tracking-tight">Hi, I'm Daniel.</h1>
+      <h1 class="text-4xl font-bold tracking-tight">Hi, I'm Daniel Rama.</h1>
       <p class="mt-4 text-lg text-neutral-600 dark:text-neutral-400">
         Informatics and Computing Engineering student at FEUP, Porto.
       </p>
@@ -65,11 +65,11 @@ import { AFFILIATIONS, CONTACT_LINKS, SOCIAL_LINKS } from '../data/links';
     </ul>
   </section>
 
-  <section class="prose prose-neutral dark:prose-invert mt-12">
+  <section id="about" class="prose prose-neutral dark:prose-invert mt-12 scroll-mt-8">
     <Intro />
   </section>
 
-  <section class="mt-12" aria-labelledby="contact">
+  <section class="mt-12 scroll-mt-8" aria-labelledby="contact">
     <h2 id="contact" class="text-2xl font-bold tracking-tight">Contact me</h2>
     <ul class="mt-4 flex flex-wrap gap-3">
       {CONTACT_LINKS.map((link) => <li><IconLink {...link} /></li>)}

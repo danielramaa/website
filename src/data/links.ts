@@ -27,6 +27,7 @@ const GMAIL: IconLinkData = {
 
 export const SOCIAL_LINKS = [GITHUB, LINKEDIN];
 export const CONTACT_LINKS = [LINKEDIN, GMAIL];
+export const NAVBAR_LINKS = [LINKEDIN, GITHUB, GMAIL];
 
 export const AFFILIATIONS = [
   {
