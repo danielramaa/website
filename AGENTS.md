@@ -8,7 +8,7 @@ Personal website built with Astro 7 + Tailwind CSS 4 + MDX, deployed as a **full
 
 All code, file names, identifiers and site content are in **English**.
 
-Planned features and ideas are tracked in `IDEAS.md`; tick items off there when they're implemented.
+Planned features and ideas are tracked in `IDEAS.md` (local only, gitignored, so it may not exist in every checkout); tick items off there when they're implemented.
 
 ## Commands
 
