@@ -1,0 +1,109 @@
+% ============================================================
+%  CV — Daniel Rama
+%  Compile with pdflatex (works as-is on Overleaf).
+% ============================================================
+\documentclass[11pt]{article}
+
+% ---------- Page & fonts ----------
+\usepackage[letterpaper, top=0.6in, bottom=0.6in, left=0.75in, right=0.75in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+% ---------- Colours ----------
+\definecolor{accent}{HTML}{1F3A5F}   % navy for name & headings
+\definecolor{rulegray}{HTML}{888888}
+\definecolor{dategray}{HTML}{666666}
+
+% ---------- Layout tweaks ----------
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+\linespread{1.08}
+\frenchspacing
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\usepackage[document]{ragged2e}  % left-aligned, no hyphenation (like the original)
+
+% Section headings: bold navy caps + grey rule underneath
+\titleformat{\section}
+  {\color{accent}\bfseries\large}{}{0pt}{\MakeUppercase}
+  [\vspace{1pt}{\color{rulegray}\titlerule[0.6pt]}]
+\titlespacing*{\section}{0pt}{10pt}{6pt}
+
+% ---------- Helper macros ----------
+% \entry{Bold title}{Rest of line}{Dates}   -> Title, rest | Dates
+\newcommand{\entry}[3]{%
+  \textbf{#1}, #2\ifx\relax#3\relax\else\ {\color{dategray}|}\ {\color{dategray}\itshape #3}\fi\par}
+% \skill{Label}{Items}
+\newcommand{\skill}[2]{\textbf{#1:} #2\par}
+% Separator for the contact line
+\newcommand{\sep}{\ |\ }
+
+% ============================================================
+\begin{document}
+
+% ---------- Header ----------
+{\color{accent}\fontsize{24}{28}\selectfont\bfseries DANIEL RAMA}\\[2pt]
+{\small\color{dategray}
+Matosinhos\sep +351 969149706\sep
+\href{mailto:daniel.morais.rama@gmail.com}{\underline{daniel.morais.rama@gmail.com}}\sep
+\href{https://github.com/danielramaa}{\underline{github.com/danielramaa}}\sep
+\href{https://linkedin.com/in/danielramaa}{\underline{linkedin.com/in/danielramaa}}\\
+Born 30-03-2006 in Porto\sep Portuguese nationality}
+
+% ---------- Profile ----------
+\section{Profile}
+Informatics and Computing Engineering student at FEUP with a background in low-level systems programming,
+computer architecture and algorithms. I am persistent and hardworking, especially when I am engaged with
+something I enjoy, and I approach problems quickly while keeping patience and focus. I adapt fast to new
+environments and see every project as an opportunity to think creatively and deepen my knowledge.
+
+% ---------- Education ----------
+\section{Education}
+\entry{Bachelor in Informatics and Computing Engineering (L.EIC)}
+      {Faculdade de Engenharia da Universidade do Porto (FEUP)}
+      {Sep 2024 -- Present}
+Relevant coursework: Computer Laboratory (C on Minix 3), Algorithm Design, Web Languages and Technologies,
+Software Engineering, Computer Architecture (RISC-V pipeline, caches, SIMD).
+
+\entry{Secondary Education in Science and Technology}
+      {Externato Ribadouro, Porto}
+      {Sep 2021 -- Aug 2024}
+Took Descriptive Geometry instead of Biology.
+
+% ---------- Experience ----------
+\section{Experience}
+\entry{Autonomous Systems Member}
+      {Formula Student FEUP (autonomous race car software)}
+      {Nov 2026 -- Present}
+\entry{Backend Developer}
+      {NIFEUP (student computing nucleus at FEUP)}
+      {Nov 2025 -- Present}
+\entry{Product Owner}
+      {semester-long university team project}
+      {}   % leave empty for no date
+
+% ---------- Skills ----------
+\section{Skills}
+\skill{Programming}{C, C++, Python, Java, Kotlin, TypeScript, JavaScript, PHP, Dart, SQL, HTML, CSS}
+\skill{Frameworks and tools}{Spring Boot, Svelte, NestJS, TypeORM, Flutter, Firebase, PostgreSQL, SQLite,
+  Testcontainers, Git and GitHub/GitLab, CI, Tailwind}
+\skill{Systems}{Linux (Arch), Windows, Minix 3}
+\skill{Currently learning}{Rust, Durable Objects}
+\skill{Soft skills}{fast learner, critical thinker, curious}
+\skill{Languages}{Portuguese (native), English (fluent), Spanish (basic)}
+
+% ---------- Additional ----------
+\section{Additional}
+Travelled to the United States in high school for two weeks, a trip I pursued myself, to immerse myself in the
+local culture.
+
+Over six years of piano training at a music school, which built my discipline and attention to detail.
+
+\skill{Interests}{exploring Linux and Unix environments, cars and aviation (sim racing, flight simulation), football.}
+
+\end{document}
