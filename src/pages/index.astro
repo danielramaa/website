@@ -3,7 +3,8 @@ import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import Intro from '../content/intro.mdx';
 import profile from '../assets/profile.webp';
-import { AFFILIATIONS, SOCIAL_LINKS } from '../data/links';
+import IconLink from '../components/IconLink.astro';
+import { AFFILIATIONS, CONTACT_LINKS, SOCIAL_LINKS } from '../data/links';
 ---
 
 <Layout>
@@ -52,23 +53,18 @@ import { AFFILIATIONS, SOCIAL_LINKS } from '../data/links';
   <section class="mt-12" aria-labelledby="socials">
     <h2 id="socials" class="text-2xl font-bold tracking-tight">Socials</h2>
     <ul class="mt-4 flex flex-wrap gap-3">
-      {SOCIAL_LINKS.map(({ label, href, icon }) => (
-        <li>
-          <a
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 rounded-full border border-neutral-200 px-4 py-2 text-sm font-medium transition-colors hover:bg-neutral-100 dark:border-neutral-800 dark:hover:bg-neutral-900"
-          >
-            <svg viewBox="0 0 24 24" class="size-4 fill-current" aria-hidden="true"><path d={icon} /></svg>
-            {label}
-          </a>
-        </li>
-      ))}
+      {SOCIAL_LINKS.map((link) => <li><IconLink {...link} /></li>)}
     </ul>
   </section>
 
   <section class="prose prose-neutral dark:prose-invert mt-12">
     <Intro />
+  </section>
+
+  <section class="mt-12" aria-labelledby="contact">
+    <h2 id="contact" class="text-2xl font-bold tracking-tight">Contact me</h2>
+    <ul class="mt-4 flex flex-wrap gap-3">
+      {CONTACT_LINKS.map((link) => <li><IconLink {...link} /></li>)}
+    </ul>
   </section>
 </Layout>
