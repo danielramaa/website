@@ -1,17 +1,24 @@
 ---
 import '../styles/global.css';
+import Breadcrumbs, { type Crumb } from '../components/Breadcrumbs.astro';
 
 interface Props {
   title?: string;
   description?: string;
   /** Use a wider content column (e.g. for the embedded CV). */
   wide?: boolean;
+  /**
+   * Breadcrumb trail after "Home". Generated automatically from the URL on every
+   * page except the home page; pass this only to override the labels.
+   */
+  breadcrumbs?: Crumb[];
 }
 
 const {
   title = 'Daniel Rama',
   description = 'Personal website of Daniel Rama, Informatics and Computing Engineering student at FEUP.',
   wide = false,
+  breadcrumbs,
 } = Astro.props;
 
 const nav = [
@@ -20,6 +27,18 @@ const nav = [
   { href: '/cv/', label: 'CV' },
 ];
 const current = Astro.url.pathname;
+
+// Labels that title-casing the URL segment would get wrong
+const CRUMB_LABELS: Record<string, string> = { cv: 'CV', 404: 'Page not found' };
+const segments = current.split('/').filter(Boolean);
+const trail: Crumb[] =
+  breadcrumbs ??
+  segments.map((segment, i) => ({
+    label:
+      CRUMB_LABELS[segment] ??
+      segment.replace(/-/g, ' ').replace(/^\w/, (c) => c.toUpperCase()),
+    href: `/${segments.slice(0, i + 1).join('/')}/`,
+  }));
 const width = wide ? 'max-w-4xl' : 'max-w-2xl';
 ---
 
@@ -55,6 +74,7 @@ const width = wide ? 'max-w-4xl' : 'max-w-2xl';
       </nav>
     </header>
     <main class={`mx-auto ${width} px-6 py-16`}>
+      {trail.length > 0 && <Breadcrumbs items={trail} />}
       <slot />
     </main>
   </body>
