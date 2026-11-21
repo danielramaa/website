@@ -1,13 +1,38 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Intro from '../content/intro.mdx';
+import { SOCIAL_LINKS } from '../data/links';
 ---
 
 <Layout>
   <h1 class="text-4xl font-bold tracking-tight">Hi, I'm Daniel.</h1>
   <p class="mt-4 text-lg text-neutral-600 dark:text-neutral-400">
-    Under construction.
+    Informatics and Computing Engineering student at FEUP, Porto.
   </p>
+
+  <ul class="mt-6 flex flex-wrap gap-3">
+    {SOCIAL_LINKS.map(({ label, href, icon }) => (
+      <li>
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 rounded-full border border-neutral-200 px-4 py-2 text-sm font-medium transition-colors hover:bg-neutral-100 dark:border-neutral-800 dark:hover:bg-neutral-900"
+        >
+          <svg viewBox="0 0 24 24" class="size-4 fill-current" aria-hidden="true"><path d={icon} /></svg>
+          {label}
+        </a>
+      </li>
+    ))}
+    <li>
+      <a
+        href="/cv/"
+        class="inline-flex items-center gap-2 rounded-full border border-transparent bg-neutral-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-neutral-700 dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-neutral-300"
+      >
+        CV
+      </a>
+    </li>
+  </ul>
 
   <section class="prose prose-neutral dark:prose-invert mt-12">
     <Intro />
