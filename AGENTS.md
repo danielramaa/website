@@ -8,6 +8,8 @@ Personal website built with Astro 7 + Tailwind CSS 4 + MDX, deployed as a **full
 
 All code, file names, identifiers and site content are in **English**.
 
+Planned features and ideas are tracked in `IDEAS.md`; tick items off there when they're implemented.
+
 ## Commands
 
 - `npm run dev` — Astro dev server at `localhost:4321`. When starting it as an agent, use background mode: `astro dev --background`, managed with `astro dev stop`, `astro dev status` and `astro dev logs`

@@ -42,6 +42,7 @@ const trail: Crumb[] =
       segment.replace(/-/g, ' ').replace(/^\w/, (c) => c.toUpperCase()),
     href: `/${segments.slice(0, i + 1).join('/')}/`,
   }));
+const year = new Date().getFullYear();
 const width = wide ? 'max-w-4xl' : 'max-w-2xl';
 ---
 
@@ -57,7 +58,7 @@ const width = wide ? 'max-w-4xl' : 'max-w-2xl';
     <link rel="sitemap" href="/sitemap-index.xml" />
     <title>{title}</title>
   </head>
-  <body class="min-h-screen bg-white text-neutral-900 antialiased dark:bg-neutral-950 dark:text-neutral-100">
+  <body class="flex min-h-screen flex-col bg-white text-neutral-900 antialiased dark:bg-neutral-950 dark:text-neutral-100">
     <header class="border-b border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-900">
       <nav class="mx-auto flex max-w-5xl flex-wrap items-center gap-x-10 gap-y-3 px-6 py-5">
         <a href="/" class="text-xl font-semibold tracking-tight">danielramaa</a>
@@ -106,9 +107,34 @@ const width = wide ? 'max-w-4xl' : 'max-w-2xl';
         </ul>
       </nav>
     </header>
-    <main class={`mx-auto ${width} px-6 py-16`}>
+    <main class={`mx-auto w-full flex-1 ${width} px-6 py-16`}>
       {trail.length > 0 && <Breadcrumbs items={trail} />}
       <slot />
     </main>
+    <footer class="border-t border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-900">
+      <div class="mx-auto flex max-w-5xl flex-col items-center gap-4 px-6 py-6 text-sm text-neutral-600 sm:flex-row dark:text-neutral-400">
+        <a href="/" class="font-semibold text-neutral-900 dark:text-neutral-100">danielramaa</a>
+        <p>© {year} Daniel Rama. All rights reserved.</p>
+        <ul class="flex items-center gap-4 sm:ml-auto">
+          {NAVBAR_LINKS.map(({ label, href, icon }) => {
+            const external = href.startsWith('http');
+            return (
+              <li>
+                <a
+                  href={href}
+                  target={external ? '_blank' : undefined}
+                  rel={external ? 'noopener noreferrer' : undefined}
+                  aria-label={label}
+                  title={label}
+                  class="block transition-colors hover:text-neutral-900 dark:hover:text-neutral-100"
+                >
+                  <svg viewBox="0 0 24 24" class="size-4 fill-current" aria-hidden="true"><path d={icon} /></svg>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </footer>
   </body>
 </html>
