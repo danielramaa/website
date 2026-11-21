@@ -11,7 +11,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "deploy": "astro build && wrangler deploy",
-    "cf:preview": "astro build && wrangler dev"
+    "cf:preview": "astro build && wrangler dev",
+    "cv": "bash scripts/build-cv.sh"
   },
   "dependencies": {
     "@astrojs/markdown-satteri": "^0.4.10",
